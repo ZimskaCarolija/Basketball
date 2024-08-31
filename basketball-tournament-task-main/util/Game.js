@@ -4,13 +4,13 @@ const GroupRound = (round, groups, groupSchedule,groupsName,exibitions) => {
     groupsName.forEach(groupName => {
         console.log("Group " + groupName);
 
-        // Uzmi odgovarajuću grupu
+   
         let group = groups[groupName];
 
-        // Uzmi raspored za trenutnu rundu (isti za sve grupe)
+     
         let currentRoundSchedule = groupSchedule[round];
 
-        // Iteriraj kroz parove u trenutnoj rundi
+     
         currentRoundSchedule.forEach(match => {
             Game(group[match[0]],group[match[1]],exibitions)
         });
@@ -66,20 +66,20 @@ const Game = (obj1,obj2,exibitions)=>
     {
     for(let i = 0; i < time; i++) {
         let isPoint = Math.random() * 100;
-        if(isPoint < 80) { // Samo 20% šanse da se poeni dodele
+        if(isPoint < 80) { 
             let score = Math.random() * 100;
-            if(score < Chance1) { // Ako je slučajni broj manji od Chance1
+            if(score < Chance1) { 
                 let is3 = Math.random() * 100;
-                if(is3 < 80) { // 20% šanse da je poen za 2
+                if(is3 < 80) { 
                     obj1Score += 2;
-                } else { // 80% šanse da je poen za 3
+                } else { 
                     obj1Score += 3;
                 }
             } else {
                 let is3 = Math.random() * 100;
-                if(is3 < 80) { // 20% šanse da je poen za 2
+                if(is3 < 80) { 
                     obj2Score += 2;
-                } else { // 80% šanse da je poen za 3
+                } else { 
                     obj2Score += 3;
                 }
             }
@@ -120,12 +120,12 @@ const Game = (obj1,obj2,exibitions)=>
 }
 const sortF = (group) => {
     return group.sort((teamA, teamB) => {
-      // Prvo sortiranje po bodovima (opadajuće)
+
       if (teamB.points !== teamA.points) {
         return teamB.points - teamA.points;
       }
       
-      // Ako su bodovi isti, sortiraj po razlici između datih i primljenih poena (opadajuće)
+
       const differenceA = teamA.scoredPoints - teamA.concededPoints;
       const differenceB = teamB.scoredPoints - teamB.concededPoints;
   
@@ -162,16 +162,15 @@ const QualifierSort=(groups,groupsName)=>{
         });
     };
 
-    // Kreiranje liste sa najboljim timovima
-    const topTeams1 = extractTopTeams(1); // Najbolji tim iz svake grupe
-    const topTeams2 = extractTopTeams(2); // Drugi najbolji tim iz svake grupe
-    const topTeams3 = extractTopTeams(3); // Treći najbolji tim iz svake grupe
 
-    // Kombinovanje timova
+    const topTeams1 = extractTopTeams(1); 
+    const topTeams2 = extractTopTeams(2); 
+    const topTeams3 = extractTopTeams(3); 
+
+
     const allTopTeams = [...topTeams1, ...topTeams2, ...topTeams3];
 
      allTopTeams.slice(0,8);
-     //return allTopTeams
      let hat = {};
     hat.D = [allTopTeams[0],allTopTeams[1]];
     hat.E = [allTopTeams[2],allTopTeams[3]];
